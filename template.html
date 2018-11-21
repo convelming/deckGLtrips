@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>deck.gl test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {margin: 0; font-family: sans-serif; width: 100vw; height: 100vh; overflow: hidden;}
+    .tooltip {pointer-events: none; position: absolute; z-index: 9; font-size: 12px; padding: 8px; background: #000; color: #fff; min-width: 160px; max-height: 240px; overflow-y: hidden;}
+    .tooltip.interactive {pointer-events: all; background: #fcfcfc; color: #444; overflow-y: auto;}
+    @font-face {
+      font-family: 'DS-DIGI';
+      src:url('DS-DIGI.TTF')
+    }
+  </style>
+</head>
+<body>
+  <div id = "info" style="position: relative;z-index: 99;background-color: whitesmoke;height:400px;width:300px;margin:20px;padding:10px;opacity: 0.85">
+    <div style="padding-top:5px"><h3 align="center" > Zurich DeckGL test</h3></div>
+   <div>
+     Current time(HH:MM:SS)
+     <div id = "showTime" style="font-family: 'DS-DIGI';font-size: 35px;"  align="right" ></div>
+   </div>
+   <div>
+      Change time(HH)
+      <div class="slideContainer">
+        <input type="range" min="0" max="24"step="1" class="slider" list = "tickmarks" id="sliderValue" style="width: 100%" >
+        <datalist id="tickmarks">
+          <option value="0"> <option value="1"><option value="2"><option value="3"><option value="4">
+          <option value="5"> <option value="6"><option value="7"><option value="8"><option value="9">
+          <option value="10"> <option value="11"><option value="12"><option value="13"><option value="14">
+          <option value="15"> <option value="16"><option value="17"><option value="18"><option value="19">
+          <option value="20"> <option value="21"><option value="22"><option value="23"><option value="24">
+        </datalist>
+      </div>
+   </div>
+    <div id = "queryEvents">
+      Query by person Id:<br>
+        <input type="text" value="" style="width: 100px;height:25px;float:right;text-align:right"> <br>
+      <br>
+    </div>
+    <div >
+      Total buildings rendered: <br>
+      <div id="buildingRenders" style="text-align: right"> </div>
+      Total link size:  <br>
+        <div id="linkSize" style="text-align: right"> 32432</div>
+        and links rendered: <br>
+      <div id="linkRenders" style="text-align: right"></div>
+    </div>
+  </div>
+
+  <div id="app" style="z-index: 3"></div>
+</body>
+<script type="text/javascript">
+  App.renderToDOM(document.getElementById('app'));
+</script>
+</html>
