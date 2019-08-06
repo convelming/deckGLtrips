@@ -21,8 +21,10 @@ const LIGHT_SETTINGS = {
 };
 
 export const INITIAL_VIEW_STATE = {
-  longitude: 8.537,//113.9550,
-  latitude: 47.368,//22.5238
+  // longitude: 8.537,//113.9550,
+  // latitude: 47.368,//22.5238
+    longitude: 114.2601,
+    latitude: 22.7328,
   zoom: 15,
   maxZoom: 20,
   pitch: 45,
@@ -74,10 +76,12 @@ export class App extends Component {
       console.log("HRS"+timePeriod+"-"+(timePeriod+1)+"avg.json");
       const DATA_URL = {
           // BUILDINGS:"data/smallSzDeck.json",//newyorkBuilding.json",
-          BUILDINGS:"data/zurichBuildingsDeck.json",
-          // BUILDINGS:"data/smallSzDeck.json",//"data/szBuildingsDeck.json",//newyorkBuilding.json",
+          //BUILDINGS:"data/zurichBuildingsDeck.json",
+           //BUILDINGS:"longgangPartBuildings/龙岗区建筑dkGL.json",//"data/szBuildingsDeck.json",//newyorkBuilding.json",
+           BUILDINGS:"data/szBuildingsDeck.json",//newyorkBuilding.json",
           // '"https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
-          TRIPS:"zurichData/HRS"+timePeriod+"-"+(timePeriod+1)+"avg.json"//"data/zurichTrips.json"//newyorkTrips.json"
+          TRIPS:""
+          //TRIPS:"zurichData/HRS"+timePeriod+"-"+(timePeriod+1)+"avg.json"//"data/zurichTrips.json"//newyorkTrips.json"
           // 'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/trips.json' // eslint-disable-line
       };
 

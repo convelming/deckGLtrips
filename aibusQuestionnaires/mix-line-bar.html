@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+
+
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=NpmMGam54T4ddwGECNN9t4aKnrU6NOfm"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+
+       <script type="text/javascript">
+       function calLogNormPara(mean, std) {
+            mu = Math.log((mean*mean)/Math.sqrt(std*std+mean*mean));
+            sigma = Math.sqrt((Math.log(std*std/(mean*mean+1))));
+            return [mu,sigma];
+       }
+
+       function getNumberInNormalDistribution(mean,std_dev){
+           return mean+(uniform2NormalDistribution()*std_dev);
+       }
+
+       function uniform2NormalDistribution(){
+           // https://www.cnblogs.com/zztt/p/4025207.html
+
+           var sum=0.0;
+           for(var i=0; i<12; i++){
+               sum=sum+Math.random();
+           }
+           return sum-6.0;
+       }
+
+       function logNormRnd(mu, sigma) {// this mu and sigma are parameters not mean and std
+           //https://www.cnblogs.com/zztt/p/4025207.html
+            return Math.exp(mu+sigma*uniform2NormalDistribution());
+       }
+
+       function logNormRndN(mu, sigma, N) {// N is the number of random nubmers
+           //https://www.cnblogs.com/zztt/p/4025207.html
+           let randN = [];
+           for (let i = 0; i < N; i++) {
+               randN.push(Math.exp(mu+sigma*uniform2NormalDistribution()))
+           }
+           return randN;
+       }
+       </script>
+
+       <table style="width: 800px">
+           <tr>
+               <th>TAXI</th>
+               <th>UAM</th>
+               <th>OTHER</th>
+           </tr>
+           <tr>
+               <td> <div id="option1" style="height:400px;width: 300px"></div></td>
+               <td><div id="option2" style="width: 40%"></div></td>
+               <td><div id="option3" style="width: 20%"></div></td>
+           </tr>
+           <tr>
+               <th>cost <div id="option1Cost"> 32 RMB</div></th>
+               <th>cost <div id="option2Cost"> 32 RMB</div></th>
+               <th>cost <div id="option3Cost"> 32 RMB</div></th>
+           </tr>
+           <tr>
+               <form action="" method="get">
+                   <th><label><input id="choice1" type="radio" value="" /> </label></th>
+                   <th><label><input id="choice2" type="radio" value="" /> </label></th>
+                   <th><label><input id="choice3" type="radio" value="" /> </label></th>
+               </form>
+           </tr>
+       </table>
+
+       <script type="text/javascript">
+           var dom = document.getElementById("option1");
+           var myChart = echarts.init(dom);
+
+           let test = logNormRndN(23,30,1000);
+           for (let i = 0; i < 1000; i++) {
+               console.log();
+
+           }
+
+           var app = {};
+           option = null;
+
+           option = {
+               tooltip: {
+                   trigger: 'axis',
+                   axisPointer: {
+                       type: 'cross',
+                       crossStyle: {
+                           color: '#999'
+                       }
+                   }
+               },
+               toolbox: {
+                   feature: {
+                       dataView: {show: true, readOnly: false},
+                       magicType: {show: true, type: ['line', 'bar']},
+                       restore: {show: true},
+                       saveAsImage: {show: true}
+
+                   }
+               },
+               legend: {
+                   data:['蒸发量','降水量','平均温度']
+               },
+               xAxis: [
+                   {
+                       type: 'value',
+                       data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+                       axisPointer: {
+                           type: 'shadow'
+                       }
+                   }
+               ],
+               yAxis: [
+                   {
+                       type: 'category',
+                       name: '水量',
+                       min: 0,
+                       max: 12,
+                       interval: 1,
+                       axisLabel: {
+                           formatter: '{value} times',
+                           align:'left',
+                       }
+                   },
+                   {
+                       type: 'value',
+                       name: '温度',
+                       min: 0,
+                       max: 12,
+                       interval: 1,
+                   }
+               ],
+               series: [
+                   {
+                       name:'蒸发量',
+                       type:'bar',
+                       data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+                   },
+                   {
+                       name:'降水量',
+                       type:'bar',
+                       data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+                   },
+                   {
+                       name:'平均温度',
+                       type:'line',
+                       data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+                   }
+               ]
+           };
+           ;
+           if (option && typeof option === "object") {
+               myChart.setOption(option, true);
+           }
+       </script>
+
+   </body>
+</html>

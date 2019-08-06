@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>VTTS</title>
+</head>
+<body>
+<h3>
+    If you have to choose between the two options below, which one will you prefer?
+
+</h3>
+
+<table border="0">
+    <tr>
+        <th>Trip I</th>
+        <th>Trip II</th>
+    </tr>
+    <tr>
+        <td><div id="option1" style="height: 300px;width:300px"></div></td>
+        <td><div id="option2" style="height: 300px;width:300px"></div></td>
+    </tr>
+
+    <form name="myform" method="post" action="do.php">
+    <tr>
+        <th>cost 12RMB <input type="radio" name="sex" value="1" /></th>
+        <th>cost 24RMB <input type="radio" name="sex" value="2" /></th>
+    </tr>
+    </form>
+</table>
+
+
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=NpmMGam54T4ddwGECNN9t4aKnrU6NOfm"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+<script type="text/javascript">
+    var dom1= document.getElementById("option1");
+    var myChart1 = echarts.init(dom1);
+    option1 = null;
+    option1 = {
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        legend: {
+            data:['早到', '迟到']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        yAxis : [
+            {
+                type : 'category',
+                axisTick : {show: false},
+                data : ['Trip 1','Trip 2','Trip 3','Trip 4','Trip 5','Trip 6','Trip 7','Trip 8','Trip 9','Trip 10']
+            }
+        ],
+        series : [
+            {
+                name:'early',
+                type:'bar',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'inside'
+                    }
+                },
+                data:[-20, , -24, , -5, , -12, , -3, ]
+            },
+            {
+                name:'late',
+                type:'bar',
+                label: {
+                    normal: {
+                        show: true
+                    }
+                },
+                data:[, 32, ,14, , 4, , 39, , 25]
+            }
+
+        ]
+    };
+    if (option1 && typeof option1 === "object") {
+        myChart1.setOption(option1, true);
+    }
+
+    var dom2= document.getElementById("option2");
+    var myChart2 = echarts.init(dom2);
+    option2 = null;
+    option2 = {
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        legend: {
+            data:['早到', '迟到']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        yAxis : [
+            {
+                type : 'category',
+                axisTick : {show: false},
+                data : ['Trip 1','Trip 2','Trip 3','Trip 4','Trip 5','Trip 6','Trip 7','Trip 8','Trip 9','Trip 10']
+            }
+        ],
+        series : [
+            {
+                name:'early',
+                type:'bar',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'inside'
+                    }
+                },
+                data:[-15, , -23, , -10, , -20, , -30, ]
+            },
+            {
+                name:'late',
+                type:'bar',
+                label: {
+                    normal: {
+                        show: true
+                    }
+                },
+                data:[, 10, ,7, , 20, , 5, , 5]
+            }
+
+        ]
+    };
+    if (option2 && typeof option2 === "object") {
+        myChart2.setOption(option2, true);
+    }
+
+</script>
+
+<div id="nextButton">
+    <input type="button" id="btNext" value="Next"/>
+</div>
+
+</body>
+
+<script>
+    var means ={};
+    ,vars
+
+    var mean, variance, mu, sigma;
+
+</script>
+</html>

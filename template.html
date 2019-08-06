@@ -15,41 +15,79 @@
   </style>
 </head>
 <body>
-  <div id = "info" style="position: relative;z-index: 99;background-color: whitesmoke;height:400px;width:300px;margin:20px;padding:10px;opacity: 0.85">
-    <div style="padding-top:5px"><h3 align="center" > Zurich DeckGL test</h3></div>
-   <div>
-     Current time(HH:MM:SS)
-     <div id = "showTime" style="font-family: 'DS-DIGI';font-size: 35px;"  align="right" ></div>
-   </div>
-   <div>
-      Change time(HH)
-      <div class="slideContainer">
-        <input type="range" min="0" max="24"step="1" class="slider" list = "tickmarks" id="sliderValue" style="width: 100%" >
-        <datalist id="tickmarks">
-          <option value="0"> <option value="1"><option value="2"><option value="3"><option value="4">
-          <option value="5"> <option value="6"><option value="7"><option value="8"><option value="9">
-          <option value="10"> <option value="11"><option value="12"><option value="13"><option value="14">
-          <option value="15"> <option value="16"><option value="17"><option value="18"><option value="19">
-          <option value="20"> <option value="21"><option value="22"><option value="23"><option value="24">
-        </datalist>
-      </div>
-   </div>
+
+<!--<div id = "info" style="position: relative;z-index: 99;background-color: whitesmoke;height:400px;width:300px;margin:20px;padding:10px;opacity: 0.85">-->
+    <!--<div style="padding-top:5px"><h3 align="center" > Zurich DeckGL test</h3></div>-->
+    <!--<div>-->
+        <!--Current time(HH:MM:SS)-->
+        <!--<div id = "showTime" style="font-family: 'DS-DIGI';font-size: 35px;"  align="right" ></div>-->
+    <!--</div>-->
+    <!--<div>-->
+        <!--Change time(HH)-->
+        <!--<div class="slideContainer">-->
+            <!--<input type="range" min="0" max="24"step="1" class="slider" list = "tickmarks" id="sliderValue" style="width: 100%" >-->
+            <!--<datalist id="tickmarks">-->
+                <!--<option value="0"> <option value="1"><option value="2"><option value="3"><option value="4">-->
+                <!--<option value="5"> <option value="6"><option value="7"><option value="8"><option value="9">-->
+                <!--<option value="10"> <option value="11"><option value="12"><option value="13"><option value="14">-->
+                <!--<option value="15"> <option value="16"><option value="17"><option value="18"><option value="19">-->
+                <!--<option value="20"> <option value="21"><option value="22"><option value="23"><option value="24">-->
+            <!--</datalist>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div id = "queryEvents">-->
+        <!--Query by person Id:<br>-->
+        <!--<input type="text" value="" style="width: 100px;height:25px;float:right;text-align:right"> <br>-->
+        <!--<br>-->
+    <!--</div>-->
+    <!--<div >-->
+        <!--Total buildings rendered: <br>-->
+        <!--<div id="buildingRenders" style="text-align: right"> </div>-->
+        <!--Total link size:  <br>-->
+        <!--<div id="linkSize" style="text-align: right"> 32432</div>-->
+        <!--and links rendered: <br>-->
+        <!--<div id="linkRenders" style="text-align: right"></div>-->
+    <!--</div>-->
+<!--</div>-->
+<div id = "info" style="position: relative;z-index: 99;background-color: whitesmoke;height:420px;width:200px;margin:20px;padding:10px;opacity: 0.85">
+    <div style="padding-top:5px"><h3 align="center" > 龙岗区停车规划</h3></div>
+    <div>
+        时间(HH:MM:SS)
+        <div id = "showTime" style="font-family: 'DS-DIGI';font-size: 35px;"  align="right" ></div>
+    </div>
+    <div>
+        拖动滑块选择时间段：
+        <div class="slideContainer">
+            <input type="range" min="0" max="24"step="1" class="slider" list = "tickmarks" id="sliderValue" style="width: 100%" >
+            <datalist id="tickmarks">
+                <option value="0"> <option value="1"><option value="2"><option value="3"><option value="4">
+                <option value="5"> <option value="6"><option value="7"><option value="8"><option value="9">
+                <option value="10"> <option value="11"><option value="12"><option value="13"><option value="14">
+                <option value="15"> <option value="16"><option value="17"><option value="18"><option value="19">
+                <option value="20"> <option value="21"><option value="22"><option value="23"><option value="24">
+            </datalist>
+        </div>
+    </div>
     <div id = "queryEvents">
-      Query by person Id:<br>
+        按区域ID查询停车状况:<br>
         <input type="text" value="" style="width: 100px;height:25px;float:right;text-align:right"> <br>
-      <br>
+        <br>
     </div>
     <div >
-      Total buildings rendered: <br>
-      <div id="buildingRenders" style="text-align: right"> </div>
-      Total link size:  <br>
-        <div id="linkSize" style="text-align: right"> 32432</div>
-        and links rendered: <br>
-      <div id="linkRenders" style="text-align: right"></div>
-    </div>
-  </div>
+        停车总需求: <br>
+        <div id="buildingRenders" style="text-align: right"> </div>
+        总停车位:  <br>
+        <div id="linkSize" style="text-align: right"> 3432</div>
+        当前剩余停车位：
+        <div id="linkSize1" style="text-align: right">1233</div>
 
-  <div id="app" style="z-index: 3"></div>
+        当前停车位需求: <br>
+
+        <div id="linkRenders" style="text-align: right">32</div>
+    </div>
+</div>
+
+<div id="app" style="z-index: 3"></div>
 </body>
 <script type="text/javascript">
   App.renderToDOM(document.getElementById('app'));
