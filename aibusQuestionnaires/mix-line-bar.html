@@ -50,6 +50,14 @@
            }
            return randN;
        }
+
+       let test = document.getElementById("test")
+       let allRnd = new String;
+       for (let i = 0; i < 1000; i++) {
+           allRnd = allRnd + logNormRnd(100,20) +",";
+       }
+       console.log(allRnd);
+       test.innerHTML = allRnd;
        </script>
 
        <table style="width: 800px">
@@ -80,12 +88,6 @@
        <script type="text/javascript">
            var dom = document.getElementById("option1");
            var myChart = echarts.init(dom);
-
-           let test = logNormRndN(23,30,1000);
-           for (let i = 0; i < 1000; i++) {
-               console.log();
-
-           }
 
            var app = {};
            option = null;
@@ -164,6 +166,6 @@
                myChart.setOption(option, true);
            }
        </script>
-
+        <div id="test">test</div>
    </body>
 </html>
